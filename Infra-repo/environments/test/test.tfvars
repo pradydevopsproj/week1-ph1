@@ -1,12 +1,9 @@
-# terraform plan  -var-file="../environments/dev/terraform_dev.tfvars"
-# terraform apply -var-file="../environments/dev/terraform_dev.tfvars" 
-
 # Environment & Region 
-environment_name = "dev"
+environment_name = "stage"
 aws_region       = "ap-south-1"
 
 # CIDR for VPC
-vpc_cidr = "10.0.0.0/26"
+vpc_cidr = "10.0.0.0/24"
 
 # Subnet mask (/24 subnets)
 subnet_newbits = 8
