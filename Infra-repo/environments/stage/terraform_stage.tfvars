@@ -1,6 +1,3 @@
-environment_name = "stage"
-aws_region       = "ap-south-1"
-
 # Environment & Region 
 environment_name = "stage"
 aws_region       = "ap-south-1"

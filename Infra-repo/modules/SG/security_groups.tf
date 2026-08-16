@@ -3,7 +3,7 @@ resource "aws_security_group" "alb_sg" {
   name        = "alb-security-group-${var.environment_name}"
   description = "Security group for Application Load Balancer"
   vpc_id      = var.vpc_id
-  
+
   ingress {
     description = "HTTP from Internet"
     from_port   = 80
@@ -38,7 +38,7 @@ resource "aws_security_group" "app_sg" {
   name        = "app-security-group-${var.environment_name}"
   description = "Security group for application instances - only allow traffic from ALB"
   vpc_id      = var.vpc_id
- 
+
   ingress {
     description     = "HTTP from ALB only"
     from_port       = 80
@@ -73,7 +73,7 @@ resource "aws_security_group" "allow_ssh" {
   name        = "allow-ssh-${var.environment_name}"
   description = "Allow SSH access - RESTRICT THIS TO YOUR IP IN PRODUCTION"
   vpc_id      = var.vpc_id
-          
+
 
   ingress {
     description = "SSH from anywhere - CHANGE THIS"

@@ -7,8 +7,8 @@ module "vpc" {
 }
 
 module "SG" {
-  source = "../modules/SG"
+  source     = "../modules/SG"
   depends_on = [module.vpc] # this depends_on not required since vpc_id = module.vpc.vpc_id already creates an implicit dependency.
-  vpc_id = module.vpc.vpc_id  
-  tags   = var.tags
+  vpc_id     = module.vpc.vpc_id
+  tags       = var.tags
 }
