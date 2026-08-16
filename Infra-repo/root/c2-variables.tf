@@ -32,11 +32,11 @@ variable "subnet_newbits" {
 }
 
 # # SSH ingress should atleast use My IP
-variable "myip" {
-  description = "my ip address"
-  type        = string
-  default     = "103.150.139.211"
-}
+# variable "myip" {
+#   description = "my ip address"
+#   type        = string
+#   default     = "103.150.139.211"
+# }
 # vpc_id validable devacarion not required sience we get input from module.vpc.vpc_id
 # variable "vpc_id" {
 #   description = "VPC ID where the security group will be created"
