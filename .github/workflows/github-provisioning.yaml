@@ -98,7 +98,7 @@ jobs:
             echo "WORKSPACE_NAME=prod" >> $GITHUB_ENV
             echo "tf_workspace=prod" >> $GITHUB_OUTPUT
             # echo "TF_VAR_FILE=prod.tfvars" >> $GITHUB_ENV
-            echo "TF_VAR_FILE=environments/prod/prod.tfvars" >> $GITHUB_ENV
+            echo "TF_VAR_FILE=./environments/prod/prod.tfvars" >> $GITHUB_ENV
           elif [[ "$BRANCH_NAME" == "test" ]]; then
             echo "WORKSPACE_NAME=test" >> $GITHUB_ENV
             echo "tf_workspace=test" >> $GITHUB_OUTPUT
