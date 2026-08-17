@@ -76,11 +76,11 @@ jobs:
         run: terraform validate
 
       # TFSEC step commented since tfsec has a recent merger with Trivy.So Trivy is tak care of both tool's checks
-      # - name: Run tfsec Terraform security scan
-      #   uses: aquasecurity/tfsec-action@v1.0.3
-      #   with:
-      #     working_directory: ./Infra-repo/root
-      #     soft_fail: false
+      - name: Run tfsec Terraform security scan
+        uses: aquasecurity/tfsec-action@v1.0.3
+        with:
+          working_directory: ./Infra-repo/root
+          soft_fail: false
 
       # - name: Run Checkov Terraform security scan
       #   uses: bridgecrewio/checkov-action@v12.1347.0
