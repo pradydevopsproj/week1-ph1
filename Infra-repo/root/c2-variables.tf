@@ -21,7 +21,7 @@ variable "tags" {
   type        = map(string)
   default = {
     Terraform = "true"
-    Name      = "pradyumna_poc"
+    Name      = "pradyumna__poc"
   }
 }
 
