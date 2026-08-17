@@ -17,7 +17,7 @@ output "public_subnet_map" {
   value       = module.vpc.public_subnet_map
   description = "Public subnets for ALB, NLB, etc."
 }
-# Output  for alb SG
+# Output for alb SG
 output "alb_sg_id" {
   value       = module.SG.alb_sg_id
   description = "The ID of the ALB SG"
