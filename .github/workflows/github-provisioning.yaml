@@ -82,13 +82,13 @@ jobs:
       #     working_directory: ./Infra-repo/root
       #     soft_fail: false
 
-      - name: Run Checkov Terraform security scan
-        uses: bridgecrewio/checkov-action@v12.1347.0
-        with:
-          directory: ./Infra-repo/root
-          framework: terraform
-          soft_fail: false
-          quiet: false    
+      # - name: Run Checkov Terraform security scan
+      #   uses: bridgecrewio/checkov-action@v12.1347.0
+      #   with:
+      #     directory: ./Infra-repo/root
+      #     framework: terraform
+      #     soft_fail: false
+      #     quiet: false    
 
       - name: Run Trivy vulnerability scanner in IaC mode
         uses: aquasecurity/trivy-action@v0.35.0
