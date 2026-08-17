@@ -1,8 +1,8 @@
 name: Terraform Drift Detection
 
 on:
-  schedule:
-#    - cron: '0 8 * * *' # Runs every day at 8am UTC
+#   schedule:
+# #    - cron: '0 8 * * *' # Runs every day at 8am UTC
   workflow_dispatch: # Allows manual triggering
 
 env:
@@ -32,7 +32,7 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.5.0
-          terraform_wrapper: false
+          terraform_wrapper: false # "false " to capture the raw or actual exit-code otherwise "ture" (by default) will hide and return exit code as 0 iven though there a drift
 
       - name: Terraform Init
         run: terraform init
