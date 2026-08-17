@@ -31,7 +31,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:
-          terraform_version: 1.5.0
+          terraform_version: 1.13.3
           terraform_wrapper: false # "false " to capture the raw or actual exit-code otherwise "ture" (by default) will hide and return exit code as 0 iven though there a drift
 
       - name: Terraform Init
