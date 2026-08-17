@@ -29,7 +29,7 @@ output "app_sg_id" {
   description = "The ID of the application tier EC2 vm SG"
 }
 
-# Output for ssh SG
+# Output  for ssh SG
 output "ssh_sg_id" {
   value       = module.SG.ssh_sg_id
   description = "The ID of the allow SSH SG"
