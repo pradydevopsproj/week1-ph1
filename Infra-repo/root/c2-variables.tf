@@ -31,27 +31,3 @@ variable "subnet_newbits" {
   default     = 8
 }
 
-# # SSH ingress should atleast use My IP
-# variable "myip" {
-#   description = "my ip address"
-#   type        = string
-#   default     = "103.150.139.211"
-# }
-# vpc_id validable devacarion not required sience we get input from module.vpc.vpc_id
-# variable "vpc_id" {
-#   description = "VPC ID where the security group will be created"
-#   type        = string
-# }
-# variable "subnet_id" {
-#   description = "Existing subnet ID inside the VPC"
-#   type        = string
-# }
-# variable "key_name" {
-#   description = "Existing EC2 key pair name"
-#   type        = string
-# }
-# variable "instance_type" {
-#   description = "EC2 instance type"
-#   type        = string
-#   default     = "t2.micro"
-# }
