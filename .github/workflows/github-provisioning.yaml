@@ -61,17 +61,7 @@ jobs:
       - name: Run TFLint
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: tflint -f compact
-
-      - name: Run Trivy vulnerability scanner in IaC mode
-        uses: aquasecurity/trivy-action@master
-        with:
-          scan-type: "config"
-          hide-progress: false
-          format: "table"
-          exit-code: "0"
-          ignore-unfixed: true
-          severity: "CRITICAL,HIGH"
+        run: tflint -f compact     
 
       - name: Terraform Init
         id: init
@@ -85,6 +75,32 @@ jobs:
         id: validate
         run: terraform validate
 
+      # TFSEC step commented since tfsec has a recent merger with Trivy.So Trivy is tak care of both tool's checks
+      # - name: Run tfsec Terraform security scan
+      #   uses: aquasecurity/tfsec-action@v1.0.3
+      #   with:
+      #     working_directory: ./Infra-repo/root
+      #     soft_fail: false
+
+      - name: Run Checkov Terraform security scan
+        uses: bridgecrewio/checkov-action@v12.1347.0
+        with:
+          directory: ./Infra-repo/root
+          framework: terraform
+          soft_fail: false
+          quiet: false    
+
+      - name: Run Trivy vulnerability scanner in IaC mode
+        uses: aquasecurity/trivy-action@v0.35.0
+        with:
+          scan-type: "config"
+          scan-ref: "./Infra-repo/root"
+          hide-progress: false
+          format: "table"
+          exit-code: "0"  # for Production we should pass "1" to create an actual security gate 
+          ignore-unfixed: true
+          severity: "CRITICAL,HIGH"    
+
       - name: Set Environment Variables
         id: env-vars
         run: |
@@ -97,17 +113,14 @@ jobs:
           if [[ "$BRANCH_NAME" == "main" ]]; then
             echo "WORKSPACE_NAME=prod" >> $GITHUB_ENV
             echo "tf_workspace=prod" >> $GITHUB_OUTPUT
-            # echo "TF_VAR_FILE=prod.tfvars" >> $GITHUB_ENV
             echo "TF_VAR_FILE=../environments/prod/prod.tfvars" >> $GITHUB_ENV
           elif [[ "$BRANCH_NAME" == "test" ]]; then
             echo "WORKSPACE_NAME=test" >> $GITHUB_ENV
             echo "tf_workspace=test" >> $GITHUB_OUTPUT
-            # echo "TF_VAR_FILE=test.tfvars" >> $GITHUB_ENV
             echo "TF_VAR_FILE=../environments/test/test.tfvars" >> $GITHUB_ENV
           else
             echo "WORKSPACE_NAME=dev" >> $GITHUB_ENV
             echo "tf_workspace=dev" >> $GITHUB_OUTPUT
-            # echo "TF_VAR_FILE=dev.tfvars" >> $GITHUB_ENV
             echo "TF_VAR_FILE=../environments/dev.tfvars" >> $GITHUB_ENV
           fi
 
