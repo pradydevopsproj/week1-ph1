@@ -120,9 +120,7 @@ jobs:
           echo "::error::Terraform plan failed."
           exit 1
     
-      # --------------------------------------------------
-      # 10. Unexpected Exit Code
-      # --------------------------------------------------
+      # Unexpected Exit Code
       - name: Unexpected Terraform Exit Code
         if: |
           steps.plan.outputs.exitcode != '0' &&
@@ -133,9 +131,8 @@ jobs:
           exit 1
 
 
-      # --------------------------------------------------
-      # 11. Upload Drift Report
-      # --------------------------------------------------
+      
+      # Upload Drift Report     
       - name: Upload Drift Report
         if: always()
         uses: actions/upload-artifact@v4
